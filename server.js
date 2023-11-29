@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+let port = process.env.PORT || 3000;
 const { MongoClient } = require('mongodb');
 
 // Static Files
@@ -11,9 +11,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+app.listen(port, ()=> {
+    console.log('listening at ', port);
 });
+    
 
 // MongoDB setup
 const mongoUri = 'mongodb+srv://szhao25:siri2023@siri.q9fi4px.mongodb.net/?retryWrites=true&w=majority'; // Replace with your URI
